@@ -7,13 +7,14 @@ let savedLocations = [];
 
 getWeatherBtn.addEventListener('click', () => {
   const city = cityInput.value.trim();
- 
+  console.log(city)
   getWeather(city);
 });
 
 async function getWeather(city) {
     try {
-      const apiUrl = `/api/${city}`;
+      const apiUrl = `http://localhost:3000/api/${city}`;
+      console
       const response = await fetch(apiUrl);
       const data = await response.json();
   
@@ -31,7 +32,7 @@ async function getWeather(city) {
       weatherDisplay.innerHTML = weatherInfo;
 
   } catch (error) {
-    console.error('Error fetching weather data:', error);
+    console.error('Error in script.js', error);
     alert('An error occurred while fetching weather data.');
   }
 }
