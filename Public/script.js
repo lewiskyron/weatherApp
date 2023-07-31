@@ -2,13 +2,23 @@ const weatherDisplay = document.getElementById('weatherDisplay');
 const cityInput = document.getElementById('cityInput');
 const getWeatherBtn = document.getElementById('getWeatherBtn');
 const locationsList = document.getElementById('locationsList');
-
+const saveButton = document.getElementById('s_button')
+const buttonContainer = document.getElementById('buttonDisplay')
 let savedLocations = [];
 
 getWeatherBtn.addEventListener('click', () => {
   const city = cityInput.value.trim();
   getWeather(city);
+  
 });
+
+
+saveButton.addEventListener('click', () => {
+  alert('Location Saved!')
+  updateSavedLocations() 
+});
+
+  
 
 async function getWeather(city) {
     try {
@@ -23,10 +33,16 @@ async function getWeather(city) {
       }
   
       const weatherInfo = `
+      <div class = "image"> 
+        <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" class="weather-icon" alt="Weather Icon" width="100" height="100" >
+      </div>
+
+      <div class = 'text'>
         <h2>${data.name}</h2>
         <p>Temperature: ${data.main.temp}°C</p>
         <p>Weather: ${data.weather[0].description}</p>
-        <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" class="weather-icon" alt="Weather Icon" width="100" height="100">
+      </div>
+       
       `;
   
       weatherDisplay.innerHTML = weatherInfo;
@@ -37,14 +53,14 @@ async function getWeather(city) {
   }
 }
 
-function updateSavedLocations() {
-  locationsList.innerHTML = '';
-  savedLocations.forEach((loc) => {
-    const listItem = document.createElement('li');
-    listItem.textContent = `${loc.city}, ${loc.country}`;
-    listItem.addEventListener('click', () => {
-      getWeather(loc.city, loc.country);
-    });
-    locationsList.appendChild(listItem);
-  });
-}
+// function updateSavedLocations() {
+//   locationsList.innerHTML = '';
+//   savedLocations.forEach((loc) => {
+//     const listItem = document.createElement('li');
+//     listItem.textContent = `${loc.city}, ${loc.country}`;
+//     getWeather(loc.city)
+//     locationsList.appendChild(listItem);
+//   });
+// }
+// ... Your existing code ...
+

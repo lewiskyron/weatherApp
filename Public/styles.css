@@ -47,8 +47,6 @@ body {
   }
 
   .weather-info {
-    display: inline-block;
-    vertical-align: middle;
     margin-left: 10px;
     margin-top: 20px;
     
@@ -57,8 +55,32 @@ body {
   .weather-icon {
     width: 100px;
     height: 100px;
+    float: right;
   }
-  
+
+  .image{
+    padding-left: 100px;
+  }
+
+  .button-container{
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .save-button {
+    background-color: #007bff; /* Blue color */
+    color: #fff; /* White text */
+    
+    /* Add some padding and adjust other styles for better appearance */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
   
   input[type="text"] {
     font-family: 'Dosis', sans-serif;
@@ -66,6 +88,8 @@ body {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
   }
   
   button {
@@ -90,4 +114,5 @@ body {
     margin-bottom: 5px;
     cursor: pointer;
   }
-  
+
+
