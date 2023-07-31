@@ -2,6 +2,7 @@ const express = require('express');
 const https = require('https');
 const path = require('path');
 const cors = require('cors');
+const axios = require('axios');
 // const static = express.static(__dirname + "/public/index.html");
 
 const app = express()
@@ -27,21 +28,20 @@ app.get("/", (req, res) => {
 });
 
 app.get('/api/:city', async (req, res) => {
-  const {city} = req.params.city;
+  const city = req.params.city;
   const API_KEY = '53dfc7eb674f6a9a878b9ea4bef5b91c';
-  console.log(city)
 
   try {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
-      const response = await fetch(url);
-      console.log(response)
-      const data = await response.json();
+      const response = await axios.get(url);
+    
+      const data = response.data;
+      console.log(data)
       res.json(data);
       console.log(data)
     } catch (error) {
       console.error('Error fetching weather data:', error);
-      res.status(500).json({ error: 'An error occurred while fetching weather data.' });
+      res.status(500).json({ error: 'An error occurred while fetching weather data from the server.' });
     }
-  });
-
+});

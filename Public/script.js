@@ -7,14 +7,13 @@ let savedLocations = [];
 
 getWeatherBtn.addEventListener('click', () => {
   const city = cityInput.value.trim();
-  console.log(city)
   getWeather(city);
 });
 
 async function getWeather(city) {
     try {
       const apiUrl = `http://localhost:3000/api/${city}`;
-      console
+     
       const response = await fetch(apiUrl);
       const data = await response.json();
   
@@ -24,9 +23,10 @@ async function getWeather(city) {
       }
   
       const weatherInfo = `
-        <h2>${data.name}}</h2>
+        <h2>${data.name}</h2>
         <p>Temperature: ${data.main.temp}°C</p>
         <p>Weather: ${data.weather[0].description}</p>
+        <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" class="weather-icon" alt="Weather Icon" width="100" height="100">
       `;
   
       weatherDisplay.innerHTML = weatherInfo;

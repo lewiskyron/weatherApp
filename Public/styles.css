@@ -45,6 +45,19 @@ body {
     gap: 10px;
     margin-bottom: 10px;
   }
+
+  .weather-info {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-top: 20px;
+    
+  }
+  
+  .weather-icon {
+    width: 100px;
+    height: 100px;
+  }
   
   
   input[type="text"] {
@@ -66,9 +79,7 @@ body {
     cursor: pointer;
   }
   
-  .weather-info {
-    margin-top: 20px;
-  }
+
   
   ul {
     list-style: none;
